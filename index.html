@@ -111,10 +111,45 @@
 
 
 </style>
+<style>
+	#progress-container {
+    position: fixed ;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    z-index: 99990;
+    /* background: #f3f3f3; */
+}
+
+#progress-bar {
+    height: 53%;
+    width: 0;
+    background: linear-gradient(90deg, rgb(244, 140, 5) 0%, rgb(242, 201, 105) 50%, rgb(244, 190, 65) 100%);
+    box-shadow: 0 0 4px rgba(216, 138, 3, 0.7), 0 0 10px rgba(255, 255, 255, 0.7);
+    transition: width 0.09s ease-in-out;
+    border-radius: 10px;
+}
+</style>
 
 
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+	
+<div id="progress-container">
+	<div id="progress-bar"></div>
+  </div>
+
+  <script>
+		
+	window.addEventListener('scroll', function() {
+		const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+		const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+		const scrolled = (winScroll / height) * 100;
+		document.getElementById('progress-bar').style.width = scrolled + '%';
+	});
+	</script>
 	  
 	  
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
